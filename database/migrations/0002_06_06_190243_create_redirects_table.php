@@ -10,14 +10,13 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('brands', function (Blueprint $table) {
+        Schema::create('redirects', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('slug')->unique();
-            $table->text('meta_description')->nullable();
-            $table->boolean('is_indexable')->default(true);
-            $table->text('description')->nullable();
-            $table->string('logo_path')->nullable();
+            $table->string('from_url')->unique();
+            $table->string('to_url');
+            $table->enum('type', ['301', '302'])->default('301');
+            $table->boolean('is_active')->default(true);
+            $table->integer('hit_count')->default(0);
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('brands');
+        Schema::dropIfExists('redirects');
     }
 };

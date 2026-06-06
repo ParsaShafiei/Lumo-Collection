@@ -16,6 +16,9 @@ return new class extends Migration {
             $table->foreignId('brand_id')->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->string('slug')->unique();
+            $table->text('short_description')->nullable();
+            $table->json('tags')->nullable(); // searchable tags
+            $table->boolean('is_indexable')->default(true);
             $table->text('description')->nullable();
             $table->decimal('base_price', 10, 2);
             $table->decimal('sale_price', 10, 2)->nullable();

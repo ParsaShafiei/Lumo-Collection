@@ -15,6 +15,8 @@ return new class extends Migration {
             $table->foreignId('parent_id')->nullable()->constrained('categories')->nullOnDelete();
             $table->string('name');
             $table->string('slug')->unique();
+            $table->text('meta_description')->nullable();
+            $table->boolean('is_indexable')->default(true);
             $table->text('description')->nullable();
             $table->string('image_path')->nullable();
             $table->timestamps();

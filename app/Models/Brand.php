@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\HasSeo;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Brand extends Model
 {
     protected $fillable = ['name', 'slug', 'description', 'logo_path'];
+    use HasSeo;
 
     public function products(): HasMany
     {
