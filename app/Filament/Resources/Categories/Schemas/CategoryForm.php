@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Categories\Schemas;
 
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
@@ -24,10 +25,13 @@ class CategoryForm
                 Textarea::make('meta_description')
                     ->columnSpanFull(),
                 Toggle::make('is_indexable')
+                    ->default(false)
+                    ->label('Indexable')
                     ->required(),
-                Textarea::make('description')
+                RichEditor::make('description')
                     ->columnSpanFull(),
                 FileUpload::make('image_path')
+                    ->label('Image')
                     ->image(),
             ]);
     }

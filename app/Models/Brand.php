@@ -8,11 +8,18 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Brand extends Model
 {
-    protected $fillable = ['name', 'slug', 'description', 'logo_path'];
+    protected $fillable = ['name', 'slug', 'description', 'logo_path', 'is_indexable'];
     use HasSeo;
 
     public function products(): HasMany
     {
         return $this->hasMany(Product::class);
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'is_indexable' => 'boolean'
+        ];
     }
 }

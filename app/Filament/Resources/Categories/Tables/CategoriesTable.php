@@ -23,8 +23,11 @@ class CategoriesTable
                 TextColumn::make('slug')
                     ->searchable(),
                 IconColumn::make('is_indexable')
+                    ->label('Indexable')
                     ->boolean(),
-                ImageColumn::make('image_path'),
+                ImageColumn::make('image_path')
+                    ->label('Image')
+                ,
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

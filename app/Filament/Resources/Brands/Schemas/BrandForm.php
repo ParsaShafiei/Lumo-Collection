@@ -2,6 +2,10 @@
 
 namespace App\Filament\Resources\Brands\Schemas;
 
+use Filament\Forms\Components\Checkbox;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Radio;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Toggle;
@@ -20,10 +24,12 @@ class BrandForm
                 Textarea::make('meta_description')
                     ->columnSpanFull(),
                 Toggle::make('is_indexable')
+                    ->label('Indexable')
+                    ->default(false)
                     ->required(),
-                Textarea::make('description')
+                RichEditor::make('description')
                     ->columnSpanFull(),
-                TextInput::make('logo_path'),
+                FileUpload::make('logo_path'),
             ]);
     }
 }
